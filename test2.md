@@ -13,3 +13,5 @@ fixed issue100
 master changed
 
 master changed 2
+
+rebase test 3 master
