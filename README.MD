@@ -15,3 +15,10 @@ fixed issue101
 fixed issue102
 
 fixed issue102-1
+
+
+rebase test 1
+
+rebase test 2
+
+rebase test 3
