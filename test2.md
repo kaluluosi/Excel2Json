@@ -15,3 +15,4 @@ master changed
 master changed 2
 
 rebase test 3 master
+rebase test 4 master
