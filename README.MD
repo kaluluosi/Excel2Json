@@ -1,24 +1,13 @@
 # README
 
-branch
+## 更新日志
 
+### ver 1.0
 
-fixed issue 33
+1. 增加config.json配置用来记录输出路径
+2. 重写Excel Addin （因为源码已经丢失了）
+3. 将原始数据获取和自定义导出过程（数据加工）剥离
 
-Test Master
+## 如何使用
 
-
-test fixed branch
-
-fixed issue101
-
-fixed issue102
-
-fixed issue102-1
-
-
-rebase test 1
-
-rebase test 2
-
-rebase test 3
+待定
