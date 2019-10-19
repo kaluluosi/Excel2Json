@@ -24,11 +24,11 @@ class Generator(object):
         return _cfg
 
     def export_json(self):
-        dir_to_save = self.cfg['export']
+        dir_to_save = os.path.join(self.workspace, self.cfg['export'])
 
         for raw_data in self.loader.all_raw_data:
             filename = os.path.join(self.workspace, dir_to_save, raw_data.cfg_file_name) + '.json'
             fp = open(filename, 'w', encoding='utf-8')
-            json.dump(raw_data.data, fp, indent=True, ensure_ascii=False)
+            json.dump(raw_data.data, fp, indent=4, ensure_ascii=False, separators=(',', ':'), skipkeys=True, check_circular=True, sort_keys=True)
 
         self.loader.close()
