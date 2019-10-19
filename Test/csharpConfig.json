@@ -1,5 +1,0 @@
-{
-  "export":"data",
-  "provider_template":"CSharpDataProviderTemplate.cs",
-  "export_csharp":"provider"
-}

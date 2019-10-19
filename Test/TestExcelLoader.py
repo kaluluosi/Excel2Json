@@ -5,7 +5,7 @@ class TestXLSXLoader(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        cls.loader = XLSXLoader('template.xlsx')
+        cls.loader = XLSXLoader('test.xlsx')
 
     def test_load_setting(self):
         setting = self.loader.setting(0)

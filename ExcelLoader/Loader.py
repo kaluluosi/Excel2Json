@@ -151,17 +151,17 @@ class XLSXLoader(ExcelLoader):
 
         # 遍历每行数据，用字典的方式组织
         data = {}
-        for raw in range(setting.field_row + 1, setting.range[0]):
+        for row in range(setting.field_row + 1, setting.range[0]):
             item = {}
             for col in range(1, setting.range[1]):
-                cell = sheet.cell(raw, col)
+                cell = sheet.cell(row, col)
                 field_name = field_names[col]
                 # 跳过空id的数据
-                if field_name == 'id' and cell.value == '':
-                    continue
-                item[field_name] = Parse(type_names[col], cell.value)
-
-            data[item['id']] = item
+                if field_name == 'id' and not cell.value:
+                    break
+                else:
+                    item[field_name] = Parse(type_names[col], cell.value)
+                    data[item['id']] = item
 
         raw_data = RawData(cfg_name, type_names, field_names, data)
 
