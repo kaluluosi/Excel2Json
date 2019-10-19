@@ -9,7 +9,7 @@ from GenCSharp.Generator import CSharpGenerator
 class TestGenerator(unittest.TestCase):
 
     def test_export_json(self):
-        gen = Generator('test.xlsx', 'config.json')
+        gen = Generator('template.xlsx', 'config.json')
         gen.export_json()
 
         self.assertTrue(len(os.listdir('./data')) > 0)
@@ -19,9 +19,9 @@ class TestGenerator(unittest.TestCase):
 class TestSCharpGenerator(unittest.TestCase):
 
     def test_export_json(self):
-        gen = CSharpGenerator('test.xlsx', 'csharpConfig.json')
+        gen = CSharpGenerator('template.xlsx', 'csharpConfig.json')
         gen.export_json()
 
     def test_export_csharp(self):
-        gen = CSharpGenerator('test.xlsx', 'csharpConfig.json')
+        gen = CSharpGenerator('template.xlsx', 'csharpConfig.json')
         gen.export_csharp()
