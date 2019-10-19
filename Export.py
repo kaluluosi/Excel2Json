@@ -17,9 +17,13 @@ if not os.path.exists(config_file):
     json.dump(default_config, fp, indent=True)
     fp.close()
 
+cfg_file = open(config_file, 'r')
+config = json.load(cfg_file)
+
 # 如果没有data目录就自动创建一个
-if not os.path.exists(os.path.join(excel_dir, 'data')):
-    os.mkdir('data')
+export_dir = os.path.join(excel_dir, config['export'])
+if not os.path.exists(export_dir):
+    os.mkdir(export_dir)
 
 gen = Generator(os.path.abspath(excel_file), excel_dir)
 gen.export_json()
