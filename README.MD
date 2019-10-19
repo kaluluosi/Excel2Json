@@ -10,3 +10,11 @@
 
 ## 如何使用
 
+本工具依赖`openpyxl`和`xlrd`，先用pip安装这两个库
+
+>pip install openpyxl
+
+>pip install xlrd
+
+Sample目录下有使用示例，直接把`template.xlsx`拖到`Export.bat`即可导出数据。
+

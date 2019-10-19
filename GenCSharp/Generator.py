@@ -1,12 +1,13 @@
 import os
+import sys
 
 from ExcelLoader import Generator
 
 
 class CSharpGenerator(Generator):
 
-    def __init__(self, excel, config):
-        super(CSharpGenerator, self).__init__(excel, config)
+    def __init__(self, excel, workspace):
+        super(CSharpGenerator, self).__init__(excel, workspace)
 
     def export_csharp(self):
         provider_template = open(self.cfg['provider_template'])
@@ -30,3 +31,11 @@ class CSharpGenerator(Generator):
             filename = os.path.join(dir_to_save, raw_data.cfg_file_name) + '.cs'
             with open(filename, 'w') as fp:
                 fp.write(code_str)
+
+
+if __name__ == '__main__':
+    excel_file = r'..\Sample\template.xlsx'
+    excel_dir = os.path.dirname(os.path.abspath(excel_file))
+
+    gen = Generator(os.path.abspath(excel_file), os.path.abspath(os.path.join(excel_dir, 'config.json')))
+    gen.export_json()
