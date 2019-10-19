@@ -11,7 +11,7 @@ class Generator(object):
     定义了导出过程，可以继承这个导出器，自己实现具体的加工rawdata的导出器。
     """
 
-    def __init__(self, excel: str, workspace: str = None):
+    def __init__(self, excel: str, workspace: str):
 
         self.excel = excel
         self.workspace = os.path.abspath(workspace)
@@ -19,11 +19,8 @@ class Generator(object):
 
     @property
     def cfg(self):
-        if self.workspace:
-            fp = open(os.path.join(self.workspace, 'config.json'))
-            _cfg = json.load(fp)
-        else:
-            _cfg = {'export': '.'}
+        fp = open(os.path.join(self.workspace, 'config.json'))
+        _cfg = json.load(fp)
         return _cfg
 
     def export_json(self):

@@ -10,10 +10,10 @@ class CSharpGenerator(Generator):
         super(CSharpGenerator, self).__init__(excel, workspace)
 
     def export_csharp(self):
-        provider_template = open(self.cfg['provider_template'])
+        provider_template = open(os.path.join(self.workspace, self.cfg['provider_template']))
         content = provider_template.read()
 
-        dir_to_save = self.cfg['export_csharp']
+        dir_to_save = os.path.join(self.workspace, self.cfg['export_csharp'])
 
         for raw_data in self.loader.all_raw_data:
 
