@@ -13,16 +13,21 @@ class Generator(object):
 
     def __init__(self, excel: str, config: str = None):
 
-        if config:
-            fp = open(config)
-
-        self.config = json.load(fp)  # if config else{'export': '.'}
         self.excel = excel
-
+        self.config = config
         self.loader = create_loader(excel)  # type:ExcelLoader
 
+    @property
+    def cfg(self):
+        if self.config:
+            fp = open(self.config)
+            _cfg = json.load(fp)
+        else:
+            _cfg = {'export': '.'}
+        return _cfg
+
     def export_json(self):
-        dir_to_save = self.config['export']
+        dir_to_save = self.cfg['export']
 
         for raw_data in self.loader.all_raw_data:
             filename = os.path.join(dir_to_save, raw_data.cfg_file_name) + '.json'
@@ -30,4 +35,3 @@ class Generator(object):
             json.dump(raw_data.data, fp, indent=True, ensure_ascii=False)
 
         self.loader.close()
-

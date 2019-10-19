@@ -1,0 +1,9 @@
+# CSharp导出器
+
+CSharp导出器本身不生成任何的数据，只负责导出供Json库反序列化用的代理类代码，
+也就是CSharpDataProvider。导出器根据配置表的名字生成对应的Provider类。
+
+不过存在一个问题，
+那就是我们无法确定json配置文件和对应的Provider类的放置路径，因此我多写了个SampleCfgProvider。
+CSharpDataProviderTemplate里默认通过SampleCfgProvider来加载json，如何加载去哪里加载由
+SampleCfgProvider控制。SampleCfgProvider只是个参考，代码很简单，你可以根据自己项目的需要去修改。

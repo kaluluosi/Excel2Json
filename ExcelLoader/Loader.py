@@ -147,7 +147,7 @@ class XLSXLoader(ExcelLoader):
             field_cell = sheet.cell(setting.field_row, col)  # type: Cell
             type_cell = sheet.cell(setting.type_row, col)  # type: Cell
             field_names.append(field_cell.value)
-            type_names.append(type_cell.value)
+            type_names.append(type_cell.value or 'int')  # 如果类型为空默认当int
 
         # 遍历每行数据，用字典的方式组织
         data = {}

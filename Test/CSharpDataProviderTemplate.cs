@@ -40,7 +40,7 @@ using UnityEngine;
 
             public class DataNode
             {{
-                {DataNodeFields}
+{DataNodeFields}
             }}
         }}
     }}
