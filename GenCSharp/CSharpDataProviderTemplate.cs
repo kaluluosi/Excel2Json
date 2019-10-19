@@ -8,6 +8,8 @@ using UnityEngine;
 
 
     namespace Data{
+
+
         public  class {ClassName}
         {
             private static {ClassName} instance;
