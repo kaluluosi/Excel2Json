@@ -83,7 +83,7 @@ def Parse(t: str, value):
 
     if t == 'string':
         try:
-            return str(value)
+            return str(value) if value else ''
         except:
             return ''
 
@@ -171,7 +171,8 @@ class XLSXLoader(ExcelLoader):
                     break
                 else:
                     item[field_name] = Parse(type_names[col], cell.value)
-                    data[item['id']] = item
+            if len(item) > 0:
+                data[item['id']] = item
 
         raw_data = RawData(cfg_name, type_names, field_names, data)
 
