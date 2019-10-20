@@ -74,14 +74,18 @@ class ExcelLoader(object):
 
 
 def Parse(t: str, value):
+
     if t == 'int':
         try:
             return int(value)
         except:
-            return -1
+            return 0
 
     if t == 'string':
-        return str(value)
+        try:
+            return str(value)
+        except:
+            return ''
 
     if t.startswith('dict'):
         try:
@@ -89,7 +93,10 @@ def Parse(t: str, value):
         except:
             return None
 
-    return eval(value)
+    try:
+        return eval(value)
+    except:
+        return None
 
 
 class XLSXLoader(ExcelLoader):
@@ -124,12 +131,15 @@ class XLSXLoader(ExcelLoader):
                 end_row = row
                 break
 
-        for col in range(1, sheet.max_column + 1):
-            cell = sheet.cell(type_row, col)
+        i = 1
+        while True:
+            cell = sheet.cell(type_row, i)
 
             if cell.fill.fgColor != type_color:
-                data_max_col = col
+                data_max_col = i
                 break
+
+            i += 1
 
         return Setting(cfg_name, type_row, field_row, (end_row, data_max_col))
 
