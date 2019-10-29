@@ -81,6 +81,12 @@ def Parse(t: str, value):
         except:
             return 0
 
+    if t == 'float':
+        try:
+            return float(value)
+        except:
+            return 0.0
+
     if t == 'string':
         try:
             return str(value) if value else ''
@@ -96,7 +102,7 @@ def Parse(t: str, value):
     try:
         return eval(value)
     except:
-        return None
+        return str(value)
 
 
 class XLSXLoader(ExcelLoader):
